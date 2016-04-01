@@ -1,19 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace PriceSnoop.ViewModels
 {
     public class Products
     {
-        public static List<Product> GetProducts()
-        {
-            return new List<Product>
-            {
-                new Product("Product 1"),
-                new Product("Product 2"),
-                new Product("Product 3"),
-                new Product("Product 4"),
-                new Product("Product 5s")
-            };
-        }
+        public static IEnumerable<Product> GetProducts() => Enumerable.Range(1, 10).Select(a => new Product($"Product {a}"));
     }
 }
