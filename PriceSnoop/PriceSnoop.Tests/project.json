@@ -1,0 +1,28 @@
+﻿{
+  "version": "1.0.0-*",
+  "description": "PriceSnoop.Tests Class Library",
+  "authors": [ "eabi" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+  "frameworks": {
+    "dnx451": {
+      "dependencies": {
+        "PriceSnoop": "1.0.0-*"
+      }
+    },
+    "dnxcore50": {
+      "dependencies": {
+        "PriceSnoop": "1.0.0-*"
+      }
+    }
+  },
+  "dependencies": {
+    "xunit": "2.1.0",
+    "xunit.runner.visualstudio": "2.1.0",
+    "xunit.runner.dnx": "2.1.0-rc1-build204"
+  },
+  "commands": {
+    "test": "xunit.runner.dnx"
+  }
+}
