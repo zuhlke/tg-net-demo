@@ -1,5 +1,0 @@
-C:\Users\eabi\Documents\Net\tg-net-demo\PriceSnoop\PriceSnoop.Shared\bin\Debug\PriceSnoop.Shared.dll
-C:\Users\eabi\Documents\Net\tg-net-demo\PriceSnoop\PriceSnoop.Shared\bin\Debug\PriceSnoop.Shared.pdb
-C:\Users\eabi\Documents\Net\tg-net-demo\PriceSnoop\PriceSnoop.Shared\obj\Debug\PriceSnoop.Shared.csprojResolveAssemblyReference.cache
-C:\Users\eabi\Documents\Net\tg-net-demo\PriceSnoop\PriceSnoop.Shared\obj\Debug\PriceSnoop.Shared.dll
-C:\Users\eabi\Documents\Net\tg-net-demo\PriceSnoop\PriceSnoop.Shared\obj\Debug\PriceSnoop.Shared.pdb

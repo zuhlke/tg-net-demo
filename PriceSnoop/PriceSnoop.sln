@@ -14,7 +14,7 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PriceSnoop", "src\PriceSnoo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{C7DF88AC-2A22-495F-A283-242FC672CD1B}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PriceSnoop.Tests", "PriceSnoop.Tests\PriceSnoop.Tests.xproj", "{AA620A27-F029-495E-B91E-A7E077D93D8A}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PriceSnoop.Tests", "test\PriceSnoop.Tests\PriceSnoop.Tests.xproj", "{AA620A27-F029-495E-B91E-A7E077D93D8A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

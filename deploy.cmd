@@ -84,13 +84,13 @@ IF DEFINED USE_MSBUILD (
   call :ExecuteCmd "%MSBUILD_PATH%" "%DEPLOYMENT_SOURCE%\PriceSnoop\PriceSnoop.sln" /nologo /verbosity:m /t:Build /p:AutoParameterizationWebConfigConnectionStrings=false;Configuration=Release;UseSharedCompilation=false %SCM_BUILD_ARGS%
   IF !ERRORLEVEL! NEQ 0 goto error
   
-  :: call :ExecuteCmd dotnet test "%DEPLOYMENT_SOURCE%\PriceSnoop\PriceSnoop.Tests\project.json" --no-build
+  :: call :ExecuteCmd dotnet test "%DEPLOYMENT_SOURCE%\PriceSnoop\test\PriceSnoop.Tests\project.json" --no-build
   :: IF !ERRORLEVEL! NEQ 0 goto error
   
   call :ExecuteCmd dotnet publish "D:\home\site\repository\PriceSnoop\src\PriceSnoop" --output "%DEPLOYMENT_TEMP%" --configuration Release --no-build
   IF !ERRORLEVEL! NEQ 0 goto error
 ) ELSE (
-  :: call :ExecuteCmd dotnet test "%DEPLOYMENT_SOURCE%\PriceSnoop\PriceSnoop.Tests\project.json"
+  :: call :ExecuteCmd dotnet test "%DEPLOYMENT_SOURCE%\PriceSnoop\test\PriceSnoop.Tests\project.json"
   :: IF !ERRORLEVEL! NEQ 0 goto error
   
   call :ExecuteCmd dotnet publish "D:\home\site\repository\PriceSnoop\src\PriceSnoop" --output "%DEPLOYMENT_TEMP%" --configuration Release
