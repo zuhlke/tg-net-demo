@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace PriceSnoop.ViewModels
+namespace PriceSnoop.Models
 {
     public class Products
     {

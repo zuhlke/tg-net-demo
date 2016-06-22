@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
-using PriceSnoop;
-using Microsoft.AspNetCore.Mvc;
 
 namespace PriceSnoop.Tests
 {
