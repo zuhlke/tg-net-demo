@@ -16,7 +16,7 @@ namespace PriceSnoop.Tests.App.Controllers
         [Fact]
         public void IndexViewModel_ShouldBeProductList()
         {
-            var target = new HomeController();
+            var target = new HomeController(null);
             var res = target.Index() as ViewResult;
             Assert.Equal(typeof(List<Product>), res.Model.GetType());
         }
