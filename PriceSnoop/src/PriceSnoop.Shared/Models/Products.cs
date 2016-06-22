@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace PriceSnoop.Models
+namespace PriceSnoop.Shared.Models
 {
     public class Products
     {

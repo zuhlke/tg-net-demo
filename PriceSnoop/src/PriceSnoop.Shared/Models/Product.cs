@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PriceSnoop.Models
+namespace PriceSnoop.Shared.Models
 {
     public class Product
     {

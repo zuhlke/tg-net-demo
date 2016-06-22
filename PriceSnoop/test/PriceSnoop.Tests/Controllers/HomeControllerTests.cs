@@ -6,7 +6,7 @@ using Xunit;
 using PriceSnoop;
 using PriceSnoop.Controllers;
 using Microsoft.AspNetCore.Mvc;
-using PriceSnoop.Models;
+using PriceSnoop.Shared.Models;
 using System.Net;
 
 namespace PriceSnoop.Tests.Controllers

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using PriceSnoop.Models;
+using PriceSnoop.Shared.Models;
 
 namespace PriceSnoop.Controllers
 {
