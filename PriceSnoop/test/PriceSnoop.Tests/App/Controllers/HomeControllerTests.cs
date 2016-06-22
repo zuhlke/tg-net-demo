@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using PriceSnoop.Shared.Models;
 using System.Net;
 
-namespace PriceSnoop.Tests.Controllers
+namespace PriceSnoop.Tests.App.Controllers
 {
     public class HomeControllerTests
     {
