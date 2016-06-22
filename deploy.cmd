@@ -79,13 +79,20 @@ IF DEFINED WEBSITE_SITE_NAME (
 call :ExecuteCmd nuget.exe restore -packagesavemode nuspec
 IF !ERRORLEVEL! NEQ 0 goto error
 
-:: 2. Build and publish
+:: 2. Build, test and publish
 IF DEFINED USE_MSBUILD (
   call :ExecuteCmd "%MSBUILD_PATH%" "%DEPLOYMENT_SOURCE%\PriceSnoop\PriceSnoop.sln" /nologo /verbosity:m /t:Build /p:AutoParameterizationWebConfigConnectionStrings=false;Configuration=Release;UseSharedCompilation=false %SCM_BUILD_ARGS%
   IF !ERRORLEVEL! NEQ 0 goto error
+  
+  call :ExecuteCmd dotnet test "%DEPLOYMENT_SOURCE%\PriceSnoop\PriceSnoop.Tests\project.json" --no-build
+  IF !ERRORLEVEL! NEQ 0 goto error
+  
   call :ExecuteCmd dotnet publish "D:\home\site\repository\PriceSnoop\src\PriceSnoop" --output "%DEPLOYMENT_TEMP%" --configuration Release --no-build
   IF !ERRORLEVEL! NEQ 0 goto error
 ) ELSE (
+  call :ExecuteCmd dotnet test "%DEPLOYMENT_SOURCE%\PriceSnoop\PriceSnoop.Tests\project.json"
+  IF !ERRORLEVEL! NEQ 0 goto error
+  
   call :ExecuteCmd dotnet publish "D:\home\site\repository\PriceSnoop\src\PriceSnoop" --output "%DEPLOYMENT_TEMP%" --configuration Release
   IF !ERRORLEVEL! NEQ 0 goto error
 )
