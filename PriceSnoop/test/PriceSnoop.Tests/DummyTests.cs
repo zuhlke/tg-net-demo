@@ -11,7 +11,7 @@ namespace PriceSnoop.Tests
         [Fact]
         public void DummyTest()
         {
-            Assert.Equal(1, 1);
+            Assert.Equal(1, 2);
         }
     }
 }
