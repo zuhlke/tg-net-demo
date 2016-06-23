@@ -79,7 +79,7 @@ IF DEFINED WEBSITE_SITE_NAME (
 call :ExecuteCmd nuget.exe restore -packagesavemode nuspec
 IF !ERRORLEVEL! NEQ 0 goto error
 
-call :ExecuteCmd dotnet restore PriceSnoop --infer-runtimes
+call :ExecuteCmd dotnet restore PriceSnoop --infer-runtimes --configfile "%DEPLOYMENT_SOURCE%\PriceSnoop\NuGet.config"
 IF !ERRORLEVEL! NEQ 0 goto error
 
 :: 2. Build, test and publish
