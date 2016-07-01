@@ -5,15 +5,16 @@ using NUnit.Framework;
 using System.Linq;
 using System.Reflection;
 using System.IO;
-using System.Resources;
-using System.Text;
 
 namespace PriceSnoop.Tests.Services
 {
+
     [TestFixture]
     public class ProductSearchTests
     {
         private string ApiKey = "test key";
+
+        private static string assemblyDirectory = Path.GetDirectoryName(typeof(ProductSearchTests).GetTypeInfo().Assembly.Location);
 
         [Test]
         public void CorrectQueryParameters_ShouldBeSentToApi()
@@ -45,22 +46,34 @@ namespace PriceSnoop.Tests.Services
         [Test]
         public void CorrectNumberOfItemsShouldBeReturned()
         {
-            //var assm = this.GetType().GetTypeInfo().Assembly;
-            //var resourceStream = assm.GetManifestResourceStream("PriceSnoop.Tests.Services.ProductSearchResults.json");
-            //string exampleResponse;
-            ////using (var reader = new StreamReader(resourceStream, Encoding.UTF8))
-            ////{
-            ////    exampleResponse = reader.ReadToEnd();
-            ////}
-
             var apiMock = new Mock<IEbayApi>();
             apiMock
                 .Setup(m => m.CallApi(It.IsAny<Dictionary<string, string>>()))
-                .Returns(File.ReadAllText("Services/ProductSearchResults.json"));
+                .Returns(Products());
 
             var target = new EbayProductSearch(apiMock.Object, ApiKey);
 
             Assert.AreEqual(20, target.Search("Any old keyword").Count());
+        }
+
+
+        [Test]
+        public void ShouldReturnProductTitlesFromApiResponse()
+        {
+            var apiMock = new Mock<IEbayApi>();
+            apiMock
+                .Setup(m => m.CallApi(It.IsAny<Dictionary<string, string>>()))
+                .Returns(Products());
+
+            var target = new EbayProductSearch(apiMock.Object, ApiKey);
+
+            var productTitles = target.Search("keyword").Select(p => p.Title);
+            CollectionAssert.IsSubsetOf(new[] { "Harry Potter: Complete 8-Film Collection (DVD, 2011, 8-Disc Set)", "Harry Potter: Harry Potter Years 1-7 by J. K. Rowling (2007, Hardcover)" }, productTitles);
+        }
+
+        private static string Products()
+        {
+            return File.ReadAllText($"{assemblyDirectory}/Services/ProductSearchResults.json");
         }
 
         private bool AssertCorrectParameters(Dictionary<string, string> expected, Dictionary<string, string> paramsToCheck)
