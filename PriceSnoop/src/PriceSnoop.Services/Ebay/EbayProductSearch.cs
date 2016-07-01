@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EbayClientHack.DTO.KeywordSearch;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -20,9 +22,9 @@ namespace PriceSnoop.Services.Ebay
             this.apiKey = apiKey;
         }
 
-        public IEnumerable<string> Search(string keyword)
+        public IEnumerable<Product> Search(string keyword)
         {
-            _api.CallApi(new Dictionary<string, string>
+            var jsonResponse = _api.CallApi(new Dictionary<string, string>
             {
                 {"QueryKeywords", keyword },
                 {"appid", this.apiKey },
@@ -36,7 +38,11 @@ namespace PriceSnoop.Services.Ebay
                 {"version", "957" }
             });
 
-            return new string[0];
+            if (string.IsNullOrEmpty(jsonResponse)) return new Product[0];
+
+            var result = JsonConvert.DeserializeObject<KeywordSearchResult>(jsonResponse);
+
+            return result.Products;
         }
     }
 }

@@ -1,7 +1,7 @@
-{
+﻿{
   "version": "1.0.0-*",
   "testRunner": "nunit",
-  "description": "PriceSnoop.Tests Class Library",
+  "description": "PriceSnoop.IntegrationTests Class Library",
   "authors": [ "eabi" ],
   "packOptions": {
     "tags": [ "" ],
@@ -32,10 +32,5 @@
     "win8-x86": {},
     "win7-x64": {},
     "win7-x86": {}
-  },
-  "buildOptions": {
-    "embed": [
-      "Services\\ProductSearchResults.json"
-    ]
   }
 }

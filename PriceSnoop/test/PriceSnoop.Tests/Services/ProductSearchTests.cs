@@ -3,6 +3,10 @@ using PriceSnoop.Services.Ebay;
 using System.Collections.Generic;
 using NUnit.Framework;
 using System.Linq;
+using System.Reflection;
+using System.IO;
+using System.Resources;
+using System.Text;
 
 namespace PriceSnoop.Tests.Services
 {
@@ -36,6 +40,27 @@ namespace PriceSnoop.Tests.Services
 
             apiMock
                 .Verify(m => m.CallApi(It.Is<Dictionary<string, string>>(d => AssertCorrectParameters(queryParams, d))));
+        }
+
+        [Test]
+        public void CorrectNumberOfItemsShouldBeReturned()
+        {
+            //var assm = this.GetType().GetTypeInfo().Assembly;
+            //var resourceStream = assm.GetManifestResourceStream("PriceSnoop.Tests.Services.ProductSearchResults.json");
+            //string exampleResponse;
+            ////using (var reader = new StreamReader(resourceStream, Encoding.UTF8))
+            ////{
+            ////    exampleResponse = reader.ReadToEnd();
+            ////}
+
+            var apiMock = new Mock<IEbayApi>();
+            apiMock
+                .Setup(m => m.CallApi(It.IsAny<Dictionary<string, string>>()))
+                .Returns(File.ReadAllText("Services/ProductSearchResults.json"));
+
+            var target = new EbayProductSearch(apiMock.Object, ApiKey);
+
+            Assert.AreEqual(20, target.Search("Any old keyword").Count());
         }
 
         private bool AssertCorrectParameters(Dictionary<string, string> expected, Dictionary<string, string> paramsToCheck)

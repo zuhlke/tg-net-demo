@@ -7,6 +7,6 @@ namespace PriceSnoop.Services.Ebay
 {
     public interface IEbayApi
     {
-        void CallApi(Dictionary<string, string> parameters);
+        string CallApi(Dictionary<string, string> parameters);
     }
 }
