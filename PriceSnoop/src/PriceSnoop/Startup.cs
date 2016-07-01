@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using PriceSnoop.Data;
 using PriceSnoop.Models;
 using PriceSnoop.Services;
+using PriceSnoop.Services.Ebay;
 
 namespace PriceSnoop
 {
@@ -53,7 +54,9 @@ namespace PriceSnoop
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
 
-            services.AddSingleton<IConfiguration>(Configuration);
+            services.AddSingleton<IEbayApi>(new EbayApi());
+            services.AddSingleton<IProductSearch>(
+                sp => new EbayProductSearch(sp.GetRequiredService<IEbayApi>(), Configuration["EbaySettings:AppId"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

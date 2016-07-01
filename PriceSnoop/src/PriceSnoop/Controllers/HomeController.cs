@@ -5,26 +5,25 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using PriceSnoop.Shared.Models;
 using Microsoft.Extensions.Configuration;
+using PriceSnoop.Services;
 
 namespace PriceSnoop.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly string _ebayAppId;
+        IProductSearch _productSearch;
 
-        public HomeController(IConfiguration config)
+        public HomeController(IProductSearch productSearch)
         {
-            _ebayAppId = "<Not Set>";
-            if (config != null)
-            {
-                _ebayAppId = config["EbaySettings:AppId"] ?? _ebayAppId;
-            }
+            _productSearch = productSearch;
         }
 
         public IActionResult Index()
         {
-            ViewBag.EbayAppId = _ebayAppId;
-            return View(Products.GetProducts());
+            var searchResults = _productSearch.Search("Harry Potter");
+
+            var vmProds = searchResults.Select(p => new Product(p.Title)).ToList();
+            return View(vmProds);
         }
 
         public IActionResult About()

@@ -1,4 +1,4 @@
-﻿{
+{
   "userSecretsId": "aspnet-PriceSnoop-00bf9786-45f7-49c1-b404-7bbc57b7d913",
 
   "dependencies": {
@@ -38,7 +38,8 @@
       "version": "1.0.0-preview2-final",
       "type": "build"
     },
-    "PriceSnoop.Shared": "1.0.0-*"
+    "PriceSnoop.Shared": "1.0.0-*",
+    "PriceSnoop.Services": "1.0.0-*"
   },
 
   "tools": {
