@@ -92,8 +92,8 @@ IF DEFINED USE_MSBUILD (
   call :ExecuteCmd dotnet test "%DEPLOYMENT_SOURCE%\PriceSnoop\test\PriceSnoop.Tests\project.json"
   IF !ERRORLEVEL! NEQ 0 goto error
 
-  call :ExecuteCmd dotnet test "%DEPLOYMENT_SOURCE%\PriceSnoop\test\PriceSnoop.IntegrationTests\project.json"
-  IF !ERRORLEVEL! NEQ 0 goto error
+  :: call :ExecuteCmd dotnet test "%DEPLOYMENT_SOURCE%\PriceSnoop\test\PriceSnoop.IntegrationTests\project.json"
+  :: IF !ERRORLEVEL! NEQ 0 goto error
 
   call :ExecuteCmd dotnet publish "D:\home\site\repository\PriceSnoop\src\PriceSnoop" --output "%DEPLOYMENT_TEMP%" --configuration Release --no-build
   IF !ERRORLEVEL! NEQ 0 goto error
@@ -101,8 +101,8 @@ IF DEFINED USE_MSBUILD (
   call :ExecuteCmd dotnet test "%DEPLOYMENT_SOURCE%\PriceSnoop\test\PriceSnoop.Tests\project.json"
   IF !ERRORLEVEL! NEQ 0 goto error
 
-  call :ExecuteCmd dotnet test "%DEPLOYMENT_SOURCE%\PriceSnoop\test\PriceSnoop.IntegrationTests\project.json"
-  IF !ERRORLEVEL! NEQ 0 goto error
+  :: call :ExecuteCmd dotnet test "%DEPLOYMENT_SOURCE%\PriceSnoop\test\PriceSnoop.IntegrationTests\project.json"
+  :: IF !ERRORLEVEL! NEQ 0 goto error
 
   call :ExecuteCmd dotnet publish "D:\home\site\repository\PriceSnoop\src\PriceSnoop" --output "%DEPLOYMENT_TEMP%" --configuration Release
   IF !ERRORLEVEL! NEQ 0 goto error
