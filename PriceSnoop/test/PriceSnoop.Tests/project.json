@@ -36,6 +36,9 @@
   "buildOptions": {
     "embed": [
       "Services\\ProductSearchResults.json"
-    ]
+    ],
+    "copyToOutput": {
+      "include": [ "**/*.json" ] 
+    }
   }
 }
