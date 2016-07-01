@@ -1,16 +1,17 @@
 ﻿using Moq;
 using PriceSnoop.Services.Ebay;
 using System.Collections.Generic;
-using Xunit;
+using NUnit.Framework;
 using System.Linq;
 
 namespace PriceSnoop.Tests.Services
 {
+    [TestFixture]
     public class ProductSearchTests
     {
         private string ApiKey = "test key";
 
-        [Fact]
+        [Test]
         public void CorrectQueryParameters_ShouldBeSentToApi()
         {
             var apiMock = new Mock<IEbayApi>();

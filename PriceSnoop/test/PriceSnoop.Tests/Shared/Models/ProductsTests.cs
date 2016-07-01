@@ -3,16 +3,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Xunit;
+using NUnit.Framework;
 
 namespace PriceSnoop.Tests.Shared.Models
 {
+    [TestFixture]
     public class ProductsTests
     {
-        [Fact]
+        [Test]
         public void GetProducts_ShouldReturnTenItems()
         {
-            Assert.Equal(10, Products.GetProducts().Count);
+            Assert.AreEqual(10, Products.GetProducts().Count);
         }
     }
 }

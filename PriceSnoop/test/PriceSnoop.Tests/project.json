@@ -1,6 +1,6 @@
 {
   "version": "1.0.0-*",
-  "testRunner": "xunit",
+  "testRunner": "nunit",
   "description": "PriceSnoop.Tests Class Library",
   "authors": [ "eabi" ],
   "packOptions": {
@@ -18,11 +18,13 @@
   },
   "dependencies": {
     "PriceSnoop": "1.0.0-*",
-    "xunit": "2.2.0-beta2-build3300",
     "dotnet-test-xunit": "2.2.0-preview2-build1029",
     "PriceSnoop.Shared": "1.0.0-*",
     "moq.netcore": "4.4.0-beta8",
-    "PriceSnoop.Services": "1.0.0-*"
+    "PriceSnoop.Services": "1.0.0-*",
+    "NUnit": "3.4.1",
+    "NUnit.Runners": "3.4.1",
+    "dotnet-test-nunit": "3.4.0-beta-1"
   },
   "runtimes": {
     "win81-x64": { },
