@@ -1,9 +1,6 @@
 ﻿using EbayClientHack.DTO.KeywordSearch;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace PriceSnoop.Services.Ebay
 {
@@ -27,7 +24,7 @@ namespace PriceSnoop.Services.Ebay
             var jsonResponse = _api.CallApi(new Dictionary<string, string>
             {
                 {"QueryKeywords", keyword },
-                {"appid", this.apiKey },
+                {"appid", apiKey },
                 {"callname", "FindProducts" },
                 {"responseencoding", "JSON" },
                 {"AvailableItemsOnly", "true" },
