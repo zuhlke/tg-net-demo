@@ -34,11 +34,9 @@
     "win7-x86": {}
   },
   "buildOptions": {
-    "embed": [
-      "Services\\ProductSearchResults.json"
-    ],
     "copyToOutput": {
-      "include": [ "**/*.json" ] 
+      "include": [ "**/*.json" ],
+      "excludeFiles": [ "project.json", "project.lock.json" ]
     }
   }
 }
