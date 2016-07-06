@@ -76,8 +76,6 @@ IF DEFINED WEBSITE_SITE_NAME (
   set NUGET_PACKAGES=%HOME%\.nuget
 )
 :: 1. Restore nuget packages
-call :ExecuteCmd nuget.exe restore -packagesavemode nuspec
-IF !ERRORLEVEL! NEQ 0 goto error
 
 call :ExecuteCmd dotnet restore PriceSnoop --infer-runtimes --configfile "%DEPLOYMENT_SOURCE%\PriceSnoop\NuGet.config"
 IF !ERRORLEVEL! NEQ 0 goto error
@@ -92,8 +90,8 @@ IF DEFINED USE_MSBUILD (
   call :ExecuteCmd dotnet test "%DEPLOYMENT_SOURCE%\PriceSnoop\test\PriceSnoop.Tests\project.json"
   IF !ERRORLEVEL! NEQ 0 goto error
 
-  :: call :ExecuteCmd dotnet test "%DEPLOYMENT_SOURCE%\PriceSnoop\test\PriceSnoop.IntegrationTests\project.json"
-  :: IF !ERRORLEVEL! NEQ 0 goto error
+  call :ExecuteCmd dotnet test "%DEPLOYMENT_SOURCE%\PriceSnoop\test\PriceSnoop.IntegrationTests\project.json"
+  IF !ERRORLEVEL! NEQ 0 goto error
 
   call :ExecuteCmd dotnet publish "D:\home\site\repository\PriceSnoop\src\PriceSnoop" --output "%DEPLOYMENT_TEMP%" --configuration Release --no-build
   IF !ERRORLEVEL! NEQ 0 goto error
@@ -101,8 +99,8 @@ IF DEFINED USE_MSBUILD (
   call :ExecuteCmd dotnet test "%DEPLOYMENT_SOURCE%\PriceSnoop\test\PriceSnoop.Tests\project.json"
   IF !ERRORLEVEL! NEQ 0 goto error
 
-  :: call :ExecuteCmd dotnet test "%DEPLOYMENT_SOURCE%\PriceSnoop\test\PriceSnoop.IntegrationTests\project.json"
-  :: IF !ERRORLEVEL! NEQ 0 goto error
+  call :ExecuteCmd dotnet test "%DEPLOYMENT_SOURCE%\PriceSnoop\test\PriceSnoop.IntegrationTests\project.json"
+  IF !ERRORLEVEL! NEQ 0 goto error
 
   call :ExecuteCmd dotnet publish "D:\home\site\repository\PriceSnoop\src\PriceSnoop" --output "%DEPLOYMENT_TEMP%" --configuration Release
   IF !ERRORLEVEL! NEQ 0 goto error
